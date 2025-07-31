@@ -5,6 +5,9 @@ const productRoutes = require('./routes/productRoutes');
 
 const app = express();
 const port = process.env.PORT || 5000;
+const cors = require('cors');
+app.use(cors());
+
 
 // Middleware to parse JSON request bodies
 app.use(express.json());
