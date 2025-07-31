@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const productRoutes = require('./routes/productRoutes');
+const departmentRoutes = require('./routes/departmentRoutes');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -22,6 +23,7 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
 
 // API Routes
 app.use('/api', productRoutes);
+app.use('/api', departmentRoutes);
 
 // Handle undefined routes
 app.use((req, res) => {
