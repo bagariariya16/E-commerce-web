@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+
+/* src/index.css or App.css */
+body {
+  padding-top: 56px; /* if your navbar is fixed-top */
+}
+
+/* Sidebar styles for department list on larger screens */
+.sidebar {
+  height: 100vh;
+  position: sticky;
+  top: 56px; /* height of navbar */
+  overflow-y: auto;
+}
+
+/* Ensure content area scrolls nicely */
+.main-content {
+  padding: 1rem;
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none; /* hide sidebar on small screens */
+  }
+}

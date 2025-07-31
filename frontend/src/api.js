@@ -16,3 +16,20 @@ export async function fetchProductById(id) {
   }
   return response.json();
 }
+
+
+export async function fetchDepartments() {
+  const response = await fetch(`${API_BASE}/departments`);
+  if (!response.ok) {
+    throw new Error('Failed to fetch departments');
+  }
+  return response.json();
+}
+
+export async function fetchProductsByDepartmentId(deptId) {
+  const response = await fetch(`${API_BASE}/departments/${deptId}/products`);
+  if (!response.ok) {
+    throw new Error('Failed to fetch products by department');
+  }
+  return response.json();
+}
