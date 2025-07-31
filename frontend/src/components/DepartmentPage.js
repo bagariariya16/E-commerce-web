@@ -20,27 +20,33 @@ const DepartmentPage = () => {
 
   // Fetch products for the selected department by name
   useEffect(() => {
-    setLoading(true);
-    setError(null);
-    // Find department object by name (case insensitive)
-    const deptObj = departments.find(d => d.name.toLowerCase() === name.toLowerCase());
-    if (deptObj) {
-      setDepartment(deptObj);
-      fetchProductsByDepartmentId(deptObj._id)
-        .then(res => {
-          setProducts(res.data);
-          setLoading(false);
-        })
-        .catch(() => {
-          setError('Failed to load products');
-          setLoading(false);
-        });
-    } else {
-      // If department not found in list yet or invalid name
-      setError('Department not found');
+  if (departments.length === 0) return; // wait till departments load
+
+  setLoading(true);
+  setError(null);
+
+  const deptObj = departments.find(d => d.name.toLowerCase() === name.toLowerCase());
+
+  if (!deptObj) {
+    setError('Department not found');
+    setLoading(false);
+    return;
+  }
+
+  setDepartment(deptObj);
+
+  fetchProductsByDepartmentId(deptObj._id)
+    .then(res => {
+      setProducts(res.data);
       setLoading(false);
-    }
-  }, [name, departments]);
+    })
+    .catch(() => {
+      setError('Failed to load products');
+      setLoading(false);
+    });
+
+}, [name, departments]);
+
 
   // Helper fetch API call - fetch products by department ID
   async function fetchProductsByDepartmentId(deptId) {

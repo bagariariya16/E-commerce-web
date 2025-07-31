@@ -37,7 +37,10 @@ async function migrateDepartments() {
     deptMap['Unknown'] = defaultDept._id;
 
     // 6. Find all products to update
-    const products = await Product.find({});
+    const products = await Product.find({})
+      .populate('department_id', 'name')
+  .limit(10);
+    
 
     // 7. Build bulk update operations with handling missing/undefined departments
     const bulkOps = products.map(product => {

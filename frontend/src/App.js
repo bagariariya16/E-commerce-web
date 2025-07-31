@@ -13,9 +13,10 @@ function App() {
       <Routes>
         <Route path="/" element={<ProductList />} />
         <Route path="/products/:id" element={<ProductDetail />} />
-        <Route path="*" element={<div className="text-center mt-5">404 - Page Not Found</div>} />
         <Route path="/department/:name" element={<DepartmentPage />} />
+        <Route path="*" element={<div className="text-center mt-5">404 - Page Not Found</div>} />
       </Routes>
+
     </Router>
   );
 }
