@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ProductCard from './ProductCard';  // reuse existing product card
-import { fetchDepartments, fetchProductsByDepartmentName } from '../api';
+import { fetchDepartments} from '../api';
 
 const DepartmentPage = () => {
   const { name } = useParams();  // department name from URL e.g. "men"
